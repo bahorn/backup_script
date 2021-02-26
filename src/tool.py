@@ -1,11 +1,27 @@
 """
-A tool to generate scripts using rclone to do backups.
-
-Allows some sanity checking over your config, etc.
-
-The scripts outputted are meant to be human readable.
+Core code behind the tool, implementing the main logic behind it.
 """
 import copy
+
+
+def readable_lines(cmd):
+    """
+    Goes through and places new lines to split up a command to make it
+    readable.
+    """
+    result = ""
+    line_length = 0
+    for section in cmd:
+        if line_length + len(section) + 8 > 80:
+            line_length = 4
+            result += '\\\n'
+            result += ' ' * line_length
+            result += section + ' '
+        else:
+            line_length += len(section)
+            result += section + ' '
+
+    return result
 
 class BackupScript:
     """
@@ -40,7 +56,7 @@ class BackupScript:
         command.append('\"%s\"' % src)
         command.append('\"%s\"' % dst)
 
-        return " ".join(command)
+        return readable_lines(command)
 
     def setup(self):
         """
