@@ -40,8 +40,10 @@ progress = true
 ```
 
 Which will generate something like:
-```
+```sh
 #/bin/sh
 # Backups files to a b2 bucket
-rclone sync --dry-run --progress --exclude ".venv" --exclude "__pycache__" --exclude "*.pyc" --exclude ".flatpak-builder" --exclude "node_modules" --exclude ".stack-work" --exclude "lost+found" "/mnt/user/Backups" "b2:bucket_name_here"
+rclone sync --dry-run --progress --exclude ".venv" --exclude "__pycache__" \
+    --exclude "*.pyc" --exclude ".flatpak-builder" --exclude "node_modules" --exclude \
+    ".stack-work" --exclude "lost+found" "/mnt/user/Backups" "b2:bucket_name_here" 
 ```
