@@ -1,0 +1,3 @@
+configs
+*.pyc
+__pycache__

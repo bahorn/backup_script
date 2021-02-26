@@ -1,0 +1,24 @@
+description = "Moves files to another drive"
+
+[global]
+ignore = [
+    ".venv",
+    "__pycache__",
+    "*.pyc",
+    ".flatpak-builder",
+    "node_modules",
+    ".stack-work",
+    "lost+found"
+]
+dry_run = true
+progress = true
+
+
+[backups]
+    [backups.code]
+    src = "/home/user/Documents/code"
+    dst = "/mnt/user/Backups/Documents"
+
+    [backups.pictures]
+    src = "/home/user/Pictures"
+    dst = "/mnt/user/Backups"
