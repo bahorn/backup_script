@@ -32,8 +32,10 @@ class BackupScript:
         if self.cfg.lookup(name, 'progress'):
             command.append('--progress')
 
-        # if cfg.lookup(name, 'ignore'):
-        #    command.append('--exclude-from=%s'.format())
+        if self.cfg.lookup(name, 'ignore'):
+            for item in self.cfg.lookup(name, 'ignore'):
+                command.append('--exclude')
+                command.append('\"%s\"' % item)
 
         command.append('\"%s\"' % src)
         command.append('\"%s\"' % dst)
