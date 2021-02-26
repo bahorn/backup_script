@@ -38,3 +38,10 @@ progress = true
     src = "/mnt/user/Backups"
     dst = "b2:bucket_name_here"
 ```
+
+Which will generate something like:
+```
+#/bin/sh
+# Backups files to a b2 bucket
+rclone sync --dry-run --progress --exclude ".venv" --exclude "__pycache__" --exclude "*.pyc" --exclude ".flatpak-builder" --exclude "node_modules" --exclude ".stack-work" --exclude "lost+found" "/mnt/user/Backups" "b2:bucket_name_here"
+```
